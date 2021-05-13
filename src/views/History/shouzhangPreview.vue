@@ -41,9 +41,25 @@
 					useCORS: true,//支持图片跨域
 				}).then(function(canvas) {
 					// 保存截图至VueX中
-					that.$store.rawMap = canvas.toDataURL('image/png');
+					that.$store.state.rawMap = canvas.toDataURL('image/jpg');
+					//以下代码为下载此图片功能
+					that.downLoadFile("simple", that.$store.state.rawMap);
 				});	
 			},
+			downLoadFile(fileName, canvasImg) {
+			            //创建一个a标签
+			            var a = document.createElement('a')
+			            //指定下载文件名称
+			            a.href = canvasImg;
+			            a.download = fileName
+			            //a 标签 需要点击触发。所以强制给他分派一个点击事件
+			            //创建一个鼠标事件
+			            let event = document.createEvent("MouseEvents")
+			            // 初始化鼠标事件
+			            event.initMouseEvent("click", true, false, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null)
+			            // 指定元素对象触发事件
+			            a.dispatchEvent(event)
+			        },
 			goback(){
 				this.$router.replace('/historypage');
 			},
@@ -64,12 +80,12 @@
 						mapStyle: 'amap://styles/7a4c1de1f0a6472553f977d132a9bd68', //设置地图的显示样式
 					});
 				    //加载控件----异步加载
-				    AMap.plugin(["AMap.ToolBar"], function() {//加载插件
-				        map.addControl(new AMap.ToolBar({
-							offset: new AMap.Pixel(9, 175),
-							liteStyle: true
-						}));
-				    });
+				  //   AMap.plugin(["AMap.ToolBar"], function() {//加载插件
+				  //       map.addControl(new AMap.ToolBar({
+						// 	offset: new AMap.Pixel(9, 175),
+						// 	liteStyle: true
+						// }));
+				  //   });
 					that.map = map;
 					that.makeFootprintIcon();
 					that.showMarker();

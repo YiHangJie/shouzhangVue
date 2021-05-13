@@ -88,7 +88,9 @@
 						console.log(res);
 						that.$store.dispatch('UpdateUserInfo', res["data"]["userData"]);
 						let newId = res['data']["userData"]["ID"];
-						console.log(newId);
+						let newName = res['data']["userData"]["userName"];
+						console.log(newId, newName);
+						
 						if (newId!=that.userId){
 							that.userID = newId;
 							that.initWebSocket(newId);

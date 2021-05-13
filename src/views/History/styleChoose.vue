@@ -60,12 +60,40 @@
 		name:'styleChoose',
 		data(){
 			return{
-				styleIndex : 1,
-				rawMap:""
+				styleIndex : 0,
+				rawMap:"",
+				userName: ""
 			}
 		},
-		created() {
-			this.rawMap = this.$store.rawMap;
+		mounted() {
+			this.rawMap = this.$store.state.rawMap;
+			this.userName = this.$store.state.userName;
+			console.log("styleChoose"+this.rawMap);
+			console.log("styleChoose"+this.userName);
+		},
+		watch:{
+			'$store.state.rawMap':{
+				handler: function(newer, older) {
+				  //解释一下为什么这里我放了判断，因为我的需求使然，我存在vuex中的是userID，一个用户只有一个id，但可能会提交多条数据，watch只在数据发生变动的时候才执行操作，所以上面我每次都将store里面的数据置空操作。
+				  if (newer === older) {
+					return
+				  } else {
+					this.rawMap = newer // methods中定义好的获取数据列表的方法
+				  }
+				},
+				deep: true // 开启深度监听
+			},
+			'$store.state.userName':{
+				handler: function(newer, older) {
+				  //解释一下为什么这里我放了判断，因为我的需求使然，我存在vuex中的是userID，一个用户只有一个id，但可能会提交多条数据，watch只在数据发生变动的时候才执行操作，所以上面我每次都将store里面的数据置空操作。
+				  if (newer === older) {
+					return
+				  } else {
+					this.userName = newer // methods中定义好的获取数据列表的方法
+				  }
+				},
+				deep: true // 开启深度监听
+			}
 		},
 		methods:{
 			goback(){
@@ -75,16 +103,22 @@
 				this.overlayShow = true;
 				this.setProgress();
 				let that = this;
+				console.log(this.userName);
+				let formData = new FormData();
+				formData.append('rawMap', this.rawMap);
 				sendRawMap({
-					url:'/mapTransfer/imgTransfer',
-					method: "post",
-					header:{
-						"Content-Type" : 'text/plain',
+						url:'/TravelApp3/imgTransfer',
+						method: "post",
+						header:{
+							"Content-Type" : 'multipart/form-data',
+						},
+						params: {
+							uname: that.userName
+						},
+						
 					},
-					params: {
-						uname: that.$store.uname,
-						photoData: that.$store.rawMap
-					}
+					{
+						rawMap: that.rawMap,
 					},
 					res => {
 						console.log("rawMap sent", res);
@@ -93,6 +127,7 @@
 						console.log(err);
 					}
 				);
+				this.$router.replace("/shouzhangresult");
 			},
 			setProgress(){
 				let that = this;

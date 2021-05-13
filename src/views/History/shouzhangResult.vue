@@ -7,7 +7,7 @@
 			  width="7rem"
 			  height="9rem"
 			  fit="scale-down"
-			  src="https://47.103.66.24:8443/shouzhang/image/shouzhang1.png"
+			  :src= stylizedMap
 			  id = "shouzhangResultImage"
 			/>
 			<div id="shouzhangResultButton">
@@ -21,20 +21,60 @@
 </template>
 
 <script>
+	import {getStylizedMap} from "../../network/request.js"
 	export default{
 		name:"shouzhangResult",
 		data(){
 			return{
-				
+				stylizedMap: this.$store.state.stylizedMap
 			}
+		},
+		created(){
+			this.$store.state.stylizedMap = this.$store.state.rawMap;
+			this.stylizedMap = this.$store.state.stylizedMap;
+			getStylizedMap({
+					url:'/TravelApp3/imgTransfer',
+					method: "post",
+					header:{
+						"Content-Type" : 'multipart/form-data',
+					},
+					params: {
+						uname: that.userName
+					},
+					
+				},
+				{
+					rawMap: that.rawMap,
+				},
+				res => {
+					console.log("rawMap sent", res);
+				},
+				err => {
+					console.log(err);
+				}
+			);
 		},
 		methods:{
 			goback(){
 				this.$router.replace('/historypage');
 			},
 			save(){
-				this.$toast.success("保存成功！");
-			}
+				this.downLoadFile("shouzhang", this.stylizedMap);
+			},
+			downLoadFile(fileName, canvasImg) {
+				//创建一个a标签
+				var a = document.createElement('a')
+				//指定下载文件名称
+				a.href = canvasImg;
+				a.download = fileName
+				//a 标签 需要点击触发。所以强制给他分派一个点击事件
+				//创建一个鼠标事件
+				let event = document.createEvent("MouseEvents")
+				// 初始化鼠标事件
+				event.initMouseEvent("click", true, false, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null)
+				// 指定元素对象触发事件
+				a.dispatchEvent(event)
+			},
 		}
 	}
 </script>

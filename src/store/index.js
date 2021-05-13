@@ -32,7 +32,7 @@ const store = new Vuex.Store({
 			state.friendsId = payload.friendsId;
 			state.friendsHeadPicUrl = payload.friendsHeadPicUrl;
 			state.friendsNameList = payload.friendsNameList;
-			console.log(state.username,state.ID,state.Email,state.headPicSrc,state.friendsId,state.friendsHeadPicUrl,state.friendsNameList);
+			console.log(state.userName,state.ID,state.Email,state.headPicSrc,state.friendsId,state.friendsHeadPicUrl,state.friendsNameList);
         },
 		text_friend(state,payload){
 			state.text_friend = payload;
