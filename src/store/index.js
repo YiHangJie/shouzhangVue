@@ -20,7 +20,8 @@ const store = new Vuex.Store({
 		readList:[],
 		preparedPois:[],
 		rawMap:"",
-		stylizedMap:""
+		stylizedMap:"",
+		picUrls:[]
 	},
     mutations:{
         //es6语法，等同edit:funcion(){...}

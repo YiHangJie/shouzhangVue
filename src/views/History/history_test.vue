@@ -81,11 +81,12 @@
 			toggle(index) {
 				// this.$refs.checkboxes[index].toggle();
 				console.log("result", index, this.result);
+				
 			},
 			routeToShouzhangPreview(){
 				let pois = [];
 				for (let i = 0; i < this.result.length; i++){
-					pois.push(this.POI_record[i]);
+					pois.push(this.POI_record[this.result[i]]);
 				}
 				this.$store.commit('editPreparedPois', pois);
 				this.$router.replace('/shouzhangpreview');

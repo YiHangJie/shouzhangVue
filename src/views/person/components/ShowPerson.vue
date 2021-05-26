@@ -2,9 +2,9 @@
   <div class="all">
     <div class="show">
       <div class="coms1">
-        <img  src="../../../assets/imgs/22.jpg" class="s-icon"/>
-        <div class="info">{{name}}</div>
-        <div class="info1">{{msg}}</div>
+        <img  :src=headPicSrc class="s-icon"/>
+        <div class="info">{{userName}}</div>
+        <div class="info1">{{Email}}</div>
       </div>
       <div class="coms2">
         <div class="data1">
@@ -26,7 +26,7 @@
     <div class="show2">
       <div class="tit">我的</div>
       <div class="showbutton">
-        <div class="cont1">
+        <div class="cont1" @click="goShouzhangRecord">
           <div class="iconfont b-icon1">&#xe60f;</div>
         </div>
         <div class="cont2">
@@ -71,12 +71,22 @@
     name:"ShowPerson",
     data() {
       return {
-        imageUrl:require('../../../assets/imgs/icons.jpg'),
-        name:"昵称",
-        msg:"个人简介"
+        uaerName:"",
+        Email:"",
+		headPicSrc:""
       }
     },
-  }
+	created() {
+		this.userName = this.$store.state.userName;
+		this.Email = this.$store.state.Email;
+		this.headPicSrc = this.$store.state.headPicSrc;
+	},
+	methods:{
+		goShouzhangRecord(){
+			this.$router.replace("/shouzhangrecords");
+		}
+	}
+}
 </script>
 
 <style>

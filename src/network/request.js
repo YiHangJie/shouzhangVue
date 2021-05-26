@@ -80,28 +80,9 @@ export function sendRawMap(config, formData, success, failure){
 	})
 }
 
-export function getStylizedMap(config, formData, success, failure){
-	// // 1.创建一个实例
-	// const instance = axios.create({
-	// 	// baseURL:"/api",
-	// 	baseURL:"https://shouzhang.icu:4430",
-	// 	timeout : 5000,
-	// 	withCredentials : true
-	// })
-	// // 2.发送真正的网络请求
-	// instance.post(formData, config)
-	// 	.then(res => {
-	// 		console.log(res);
-	// 		success(res);
-	// 	})
-	// 	.catch(err => {
-	// 		console.log(err);
-	// 		failure(err);
-	// 	})
-	
-	axios.post(
-		"https://shouzhang.icu:4430/TravelApp3/imgTransfer",
-		formData,
+export function getStylizedMap(config, success, failure){
+	axios.get(
+		"https://shouzhang.icu:4430/TravelApp3/getImgTransfered",
 		config
 	).then(res=> {
 		console.log(res);
@@ -110,4 +91,5 @@ export function getStylizedMap(config, formData, success, failure){
 		console.log(err);
 		failure(err);
 	})
+
 }

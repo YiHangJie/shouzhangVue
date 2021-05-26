@@ -17,6 +17,7 @@ const ImageUploaderPage = () => import('../views/chat_test/uploadImage.vue')
 const ShouzhangPreviewPage = () => import('../views/History/shouzhangPreview.vue')
 const ShouzhangResultPage = () => import('../views/History/shouzhangResult.vue')
 const styleChoosePage = () => import('../views/History/styleChoose.vue')
+const shouzhangRecordsPage = () => import('../views/person/shouzhangRecords.vue')
 
 const routes = [
   {
@@ -92,6 +93,11 @@ const routes = [
   	path: '/stylechoose',
   	name: 'stylechoose',
   	component: styleChoosePage
+  },
+  {
+  	path: '/shouzhangrecords',
+  	name: 'shouzhangrecords',
+  	component: shouzhangRecordsPage
   },
 ]
 

@@ -111,7 +111,7 @@
 			},
 			judge_ifMainpage(){
 				let path = this.$route.path;
-				if (path == "/" | path == "/loginday" | path == "/chatroom" | path == "/registerday" | path == "/imguploader" | path == "/shouzhangpreview"){
+				if (path == "/" | path == "/loginday" | path == "/chatroom" | path == "/registerday" | path == "/imguploader" | path == "/shouzhangpreview" | path == "/stylechoose"){
 					this.ifMainpage = false;
 				}
 				else{

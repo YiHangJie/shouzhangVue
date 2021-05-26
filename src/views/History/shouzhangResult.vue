@@ -30,29 +30,7 @@
 			}
 		},
 		created(){
-			this.$store.state.stylizedMap = this.$store.state.rawMap;
 			this.stylizedMap = this.$store.state.stylizedMap;
-			getStylizedMap({
-					url:'/TravelApp3/imgTransfer',
-					method: "post",
-					header:{
-						"Content-Type" : 'multipart/form-data',
-					},
-					params: {
-						uname: that.userName
-					},
-					
-				},
-				{
-					rawMap: that.rawMap,
-				},
-				res => {
-					console.log("rawMap sent", res);
-				},
-				err => {
-					console.log(err);
-				}
-			);
 		},
 		methods:{
 			goback(){

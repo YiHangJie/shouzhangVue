@@ -22,8 +22,6 @@
 				adcode: 1100,
 				poiList: [],
 				footprintIcon: undefined,
-				overlayShow: false,
-				progressrate: 0,
 			}
 		},
 		mounted() {
@@ -71,7 +69,7 @@
 				document.head.appendChild(jsapi);
 				
 				let that = this;
-				 window.init= function(){
+				window.init= function(){
 					var map = new AMap.Map('container', {
 						center:[116.39,39.9],
 						zoom: 11,
