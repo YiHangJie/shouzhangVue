@@ -80,9 +80,9 @@ export function sendRawMap(config, formData, success, failure){
 	})
 }
 
-export function getStylizedMap(config, success, failure){
+export function getStylizedMap(url, config, success, failure){
 	axios.get(
-		"https://shouzhang.icu:4430/TravelApp3/getImgTransfered",
+		"https://shouzhang.icu:4430"+url,
 		config
 	).then(res=> {
 		console.log(res);

@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<van-row>
+		<!-- <van-row>
 			<van-col span="6" id="headpic">
 				<van-image
 				  round
@@ -12,7 +12,7 @@
 				<van-cell :title="$store.state.userName" size="large" label="" />
 				<p class="introduction">{{$store.state.Email}}</p>
 			</van-col>
-		</van-row>
+		</van-row> -->
 		<ShowPerson></ShowPerson>
 	</div>
 </template>

@@ -41,7 +41,7 @@
 					// 保存截图至VueX中
 					that.$store.state.rawMap = canvas.toDataURL('image/jpg');
 					//以下代码为下载此图片功能
-					that.downLoadFile("simple", that.$store.state.rawMap);
+					// that.downLoadFile("simple", that.$store.state.rawMap);
 				});	
 			},
 			downLoadFile(fileName, canvasImg) {

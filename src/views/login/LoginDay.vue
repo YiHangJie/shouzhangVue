@@ -44,7 +44,7 @@
 			  this.$router.replace('/registerday');
 		  },
 		  loginclick(){
-			  this.$router.replace('/realhome');
+			  this.$router.replace('/recommend');
 			  // let login_data = {"uname":this.uname , "pwd":this.password};
 			  request({
 			  		url:'/TravelApp3/DoLogin',
@@ -65,7 +65,7 @@
 					console.log(allCookies);
 					this.sessionid = res['headers']["sessionid"];
 					if(res['headers']['loginstate'] == 1){
-						this.$router.replace('/realhome');
+						this.$router.replace('/recommend');
 					}
 				},
 				err => {

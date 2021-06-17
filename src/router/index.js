@@ -18,6 +18,7 @@ const ShouzhangPreviewPage = () => import('../views/History/shouzhangPreview.vue
 const ShouzhangResultPage = () => import('../views/History/shouzhangResult.vue')
 const styleChoosePage = () => import('../views/History/styleChoose.vue')
 const shouzhangRecordsPage = () => import('../views/person/shouzhangRecords.vue')
+const RecommendPage = () => import('../views/recommendPage/RecommendPage.vue')
 
 const routes = [
   {
@@ -98,6 +99,11 @@ const routes = [
   	path: '/shouzhangrecords',
   	name: 'shouzhangrecords',
   	component: shouzhangRecordsPage
+  },
+  {
+  	path: '/recommend',
+  	name: 'recommend',
+  	component: RecommendPage
   },
 ]
 

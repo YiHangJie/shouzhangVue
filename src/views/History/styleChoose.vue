@@ -41,7 +41,7 @@
 		 
 		<van-divider>给手帐取个名字吧</van-divider>
 		<div class="shouzhangName">
-			<input class="shouzhangNameInput" type="text" :placeholder=shouzhangName onfocus="this.placeholder=''"/>
+			<input class="shouzhangNameInput" type="text" :placeholder=shouzhangName v-model=shouzhangName onfocus="this.placeholder=''"/>
 		</div>
 		
 		
@@ -55,6 +55,8 @@
 				<div style="color: #99A9BF;">手帐生成中······</div>
 			</div>
 		</van-overlay>
+		
+		
 	</div>
 	
 </template>
@@ -75,10 +77,12 @@
 				shouzhangName: ""
 			}
 		},
+		created() {
+			this.shouzhangName = this.userName + "的手帐";
+		},
 		mounted() {
 			this.rawMap = this.$store.state.rawMap;
 			this.userName = this.$store.state.userName;
-			this.shouzhangName = this.userName + "的手帐";
 			console.log("styleChoose"+this.rawMap);
 			console.log("styleChoose"+this.userName);
 		},
@@ -141,7 +145,7 @@
 						console.log(err);
 					}
 				);
-				this.$router.replace("/realhome");
+				this.$router.replace("/recommend");
 			},
 			setProgress(){
 				let that = this;

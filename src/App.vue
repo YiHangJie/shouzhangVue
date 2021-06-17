@@ -2,7 +2,7 @@
   <div id="app">
 	<router-view class="router"/>
 	<van-tabbar route v-if="ifMainpage">
-	  <van-tabbar-item replace to="/realhome" icon="home-o">主页</van-tabbar-item>
+	  <van-tabbar-item replace to="/recommend" icon="home-o">主页</van-tabbar-item>
 	  <van-tabbar-item replace to="/chatlist" icon="friends-o">好友</van-tabbar-item>
 	  <van-tabbar-item replace to="/historypage" icon="records">历史</van-tabbar-item>
 	  <van-tabbar-item replace to="/personpage" icon="setting-o">我的</van-tabbar-item>
@@ -132,7 +132,7 @@
 			},
 			initWebSocket(uid){ //初始化weosocket
 				if(this.websock == null){
-					const wsuri = "wss://47.103.66.24:8443/TravelApp3/websocket/"+uid.toString() //这个地址由后端童鞋提供
+					const wsuri = "wss://shouzhang.icu:4430/TravelApp3/websocketWin/"+uid.toString() //这个地址由后端童鞋提供
 					console.log("init websocket");
 					console.log(wsuri);
 					this.websock = new WebSocket(wsuri);
